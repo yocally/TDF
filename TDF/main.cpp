@@ -82,7 +82,7 @@ bool init() {
 
 void loadMedia() {
 	gBackground = loadTexture("rec/background.png");
-	gChar = loadTexture("rec/background.png");
+	gChar = loadTexture("rec/char.png");
 }
 
 SDL_Texture* loadTexture(std::string path) {
@@ -127,7 +127,7 @@ int main(int argc, char* argv[]) {
 	knight.setTex(gChar);
 	knight.setRect(100, 100);
 	bool quit = false;
-	SDL_Event e;
+	SDL_Event e;S
 	while (!quit) {
 		while (SDL_PollEvent(&e) != 0) {
 			if (e.type == SDL_QUIT) {
