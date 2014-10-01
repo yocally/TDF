@@ -11,17 +11,20 @@ private:
 	int heightLocal = 64;
 	int widthLocal = 64;
 	SDL_Rect knightClip;
+	bool isMoving = true;
+	bool firstRun = true;
+	int sleepTime;
+	int animStartTime;
+	int animEndTime;
 
 
 public:
-	SDL_Texture* tex = loadTexture("rec/Knight.png", globalRen);
+	
 	SDL_Rect rect;
 	std::string tag;
+	int derec;
+	int frame;
 
-
-	void setTex(SDL_Texture* loadedTex) {
-		tex = loadedTex;
-	}
 
 	void setRect(int x, int y) {
 		xLocal = x;
@@ -38,15 +41,29 @@ public:
 	}
 
 	void refresh() {
-		knightClip.x = 64;
-		knightClip.y = 0;
+		if (firstRun) {
+			firstRun = false;
+			animStartTime = SDL_GetTicks();
+		}
+		animEndTime = animStartTime + 200;
+		if (animEndTime <= SDL_GetTicks()) {
+			if (frame < 2) {
+				frame++;
+			}
+			else {
+				frame = 0;
+			}
+			animStartTime = SDL_GetTicks();
+		}
+		knightClip.x = frame * 63;
+		knightClip.y = derec * 63;
 		knightClip.h = 64;
 		knightClip.w = 64;
 	}
 
 	void render(SDL_Renderer* ren) {
 		refresh();
-		SDL_RenderCopy(ren, tex, &knightClip, &returnRect());
+		SDL_RenderCopy(ren, G::knight, &knightClip, &returnRect());
 	}
 };
 #endif

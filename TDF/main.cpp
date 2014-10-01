@@ -50,9 +50,11 @@ bool init() {
 }
 
 void loadMedia() {
-	setGlobalRen(gRenderer);
-	mainBackground.setTex(loadTexture("rec/background.png", gRenderer));
+	G::setRen(gRenderer);
+	G::loadMedia(G::ren);
 	inn1.addKnight("knight1");
+	inn1.knightVector.at(0).derec = 5;
+	inn1.knightVector.at(0).frame = 1;
 }
 
 void close() {
@@ -68,6 +70,8 @@ void refresh() {
 	SDL_RenderClear(gRenderer);
 	mainBackground.render(gRenderer);
 	inn1.renderKnightVector(gRenderer);
+	inn1.setRect(220, 60);
+	inn1.render(G::ren);
 	SDL_RenderPresent(gRenderer);
 }
 

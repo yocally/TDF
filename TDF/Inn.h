@@ -10,6 +10,8 @@ class Inn{
 private:
 	int xLocal;
 	int yLocal;
+	int heightLocal = 128;
+	int widthLocal = 192;
 
 
 public:
@@ -26,6 +28,25 @@ public:
 	std::vector<Knight> knightVector;
 
 
+	// Functions - Inn Functions
+
+	void render(SDL_Renderer* loadedRen) {
+		refresh();
+		SDL_RenderCopy(loadedRen, G::inn, NULL, &rect);
+	}
+
+	void setRect(int x, int y) {
+		xLocal = x;
+		yLocal = y;
+	}
+
+	void refresh() {
+		rect.x = xLocal;
+		rect.y = yLocal;
+		rect.h = heightLocal;
+		rect.w = widthLocal;
+
+	}
 	// Functions - Spawner Functions
 
 	void addKnight(std::string fTag) {
