@@ -1,6 +1,8 @@
-#include <SDL.h>
-#include <stdio.h>
-#include <string>
+#include "AllHeaders.h"
+#include "GameTextures.h"
+
+#ifndef __KNIGHT_H_INCLUDED__
+#define __KNIGHT_H_INCLUDED__
 
 class Knight{
 private:
@@ -12,7 +14,7 @@ private:
 
 
 public:
-	SDL_Texture* tex;
+	SDL_Texture* tex = loadTexture("rec/Knight.png", globalRen);
 	SDL_Rect rect;
 	std::string tag;
 
@@ -47,3 +49,4 @@ public:
 		SDL_RenderCopy(ren, tex, &knightClip, &returnRect());
 	}
 };
+#endif

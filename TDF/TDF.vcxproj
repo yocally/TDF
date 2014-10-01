@@ -75,9 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
-    <ClInclude Include="ExternalHeaders.h" />
-    <ClInclude Include="InternalHeaders.h" />
+    <ClInclude Include="GameTextures.h" />
+    <ClInclude Include="Inn.h" />
+    <ClInclude Include="AllHeaders.h" />
     <ClInclude Include="Knight.h" />
+    <ClInclude Include="TextureHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

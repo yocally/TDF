@@ -1,13 +1,16 @@
 
-#include "ExternalHeaders.h"
-#include "InternalHeaders.h"
+#include "AllHeaders.h"
+#include "Background.h"
+#include "GameTextures.h"
+#include "Inn.h"
+#include "Knight.h"
+#include "TextureHelper.h"
 
 
 // Function Redef
 
 bool init();
 void loadMedia();
-SDL_Texture* loadTexture(std::string path);
 void close();
 void refresh();
 
@@ -17,7 +20,7 @@ void refresh();
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 Background mainBackground;
-Knight knight1;
+Inn inn1;
 
 
 // Functions
@@ -47,24 +50,9 @@ bool init() {
 }
 
 void loadMedia() {
-	mainBackground.setTex(loadTexture("rec/background.png"));
-	knight1.setTex(loadTexture("rec/Knight.png"));
-}
-
-SDL_Texture* loadTexture(std::string path) {
-	SDL_Texture* newTexture = NULL;
-	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-	if (loadedSurface == NULL) {
-		printf("Unable to load image %s! SDL_image Error: $s\n", path.c_str(), IMG_GetError());
-	}
-	else {
-		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
-		if (newTexture == NULL) {
-			printf("Unable to create texture from %s! SDL_Error: %s\n", path.c_str(), SDL_GetError());
-		}
-		SDL_FreeSurface(loadedSurface);
-	}
-	return newTexture;
+	setGlobalRen(gRenderer);
+	mainBackground.setTex(loadTexture("rec/background.png", gRenderer));
+	inn1.addKnight("knight1");
 }
 
 void close() {
@@ -79,7 +67,7 @@ void close() {
 void refresh() {
 	SDL_RenderClear(gRenderer);
 	mainBackground.render(gRenderer);
-	knight1.render(gRenderer);
+	inn1.renderKnightVector(gRenderer);
 	SDL_RenderPresent(gRenderer);
 }
 
@@ -88,7 +76,6 @@ int main(int argc, char* argv[]) {
 		printf("Init failed");
 	}
 	loadMedia();
-	knight1.setRect(100, 100);
 	bool quit = false;
 	SDL_Event e;
 	while (!quit) {

@@ -1,5 +1,8 @@
 
-#include "ExternalHeaders.h"
+#include "AllHeaders.h"
+
+#ifndef __BACKGROUND_H_INCLUDED__
+#define __BACKGROUND_H_INCLUDED__
 
 class Background {
 private:
@@ -26,3 +29,5 @@ public:
 		SDL_RenderCopy(ren, tex, NULL, NULL);
 	}
 };
+
+#endif
