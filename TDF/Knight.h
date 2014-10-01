@@ -6,6 +6,12 @@
 
 class Knight{
 private:
+	int sleepTime;
+	int animStartTime;
+	int animEndTime;
+	int derec = 0;
+	int frame = 0;
+	int size = 63;
 	int xLocal;
 	int yLocal;
 	int heightLocal = 64;
@@ -13,17 +19,13 @@ private:
 	SDL_Rect knightClip;
 	bool isMoving = true;
 	bool firstRun = true;
-	int sleepTime;
-	int animStartTime;
-	int animEndTime;
-
+	bool rorl = true;
 
 public:
 	
 	SDL_Rect rect;
 	std::string tag;
-	int derec;
-	int frame;
+
 
 
 	void setRect(int x, int y) {
@@ -47,18 +49,29 @@ public:
 		}
 		animEndTime = animStartTime + 200;
 		if (animEndTime <= SDL_GetTicks()) {
-			if (frame < 2) {
-				frame++;
+			if (rorl == true) {
+				if (frame < 2) {
+					frame++;
+				}
+				else {
+					rorl = false;
+				}
 			}
-			else {
-				frame = 0;
+			if (rorl == false) {
+				if (frame < 0) {
+					frame--;
+				}
+				else {
+					rorl = true;
+				}
 			}
+
 			animStartTime = SDL_GetTicks();
 		}
-		knightClip.x = frame * 63;
-		knightClip.y = derec * 63;
-		knightClip.h = 64;
-		knightClip.w = 64;
+		knightClip.x = frame * size;
+		knightClip.y = derec * size;
+		knightClip.h = size;
+		knightClip.w = size;
 	}
 
 	void render(SDL_Renderer* ren) {

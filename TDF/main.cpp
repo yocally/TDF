@@ -53,8 +53,6 @@ void loadMedia() {
 	G::setRen(gRenderer);
 	G::loadMedia(G::ren);
 	inn1.addKnight("knight1");
-	inn1.knightVector.at(0).derec = 5;
-	inn1.knightVector.at(0).frame = 1;
 }
 
 void close() {
