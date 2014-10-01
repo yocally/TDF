@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <string>
-#include <SDL.h>
-#include <SDL_image.h>
+
+#include "ExternalHeaders.h"
+#include "InternalHeaders.h"
+
 
 // Function Redef
 
@@ -17,41 +17,7 @@ void refresh();
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 SDL_Texture* gBackground = NULL;
-SDL_Texture* gChar = NULL;
-
-
-// Classes
-
-class Knight{
-	int xLocal;
-	int yLocal;
-
-public:
-	SDL_Texture* tex = gChar;
-
-
-	void setTex(SDL_Texture* loadedTex) {
-		tex = loadedTex;
-	}
-
-	void setRect(int x, int y) {
-		xLocal = x;
-		yLocal = y;
-	}
-
-	SDL_Rect getRect() {
-		SDL_Rect re;
-		re.x = xLocal;
-		re.y = yLocal;
-		return re;
-	}
-
-};
-
-
-// Class Global Def
-
-Knight knight;
+Knight knight1;
 
 
 // Functions
@@ -82,7 +48,7 @@ bool init() {
 
 void loadMedia() {
 	gBackground = loadTexture("rec/background.png");
-	gChar = loadTexture("rec/char.png");
+	knight1.setTex(loadTexture("rec/char.png"));
 }
 
 SDL_Texture* loadTexture(std::string path) {
@@ -115,7 +81,7 @@ void close() {
 void refresh() {
 	SDL_RenderClear(gRenderer);
 	SDL_RenderCopy(gRenderer, gBackground, NULL, NULL);
-	SDL_RenderCopy(gRenderer, knight.tex, NULL, &knight.getRect());
+	SDL_RenderCopy(gRenderer, knight1.tex, NULL, &knight1.returnRect());
 	SDL_RenderPresent(gRenderer);
 }
 
@@ -124,10 +90,9 @@ int main(int argc, char* argv[]) {
 		printf("Init failed");
 	}
 	loadMedia();
-	knight.setTex(gChar);
-	knight.setRect(100, 100);
+	knight1.setRect(100, 100);
 	bool quit = false;
-	SDL_Event e;S
+	SDL_Event e;
 	while (!quit) {
 		while (SDL_PollEvent(&e) != 0) {
 			if (e.type == SDL_QUIT) {
