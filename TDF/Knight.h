@@ -8,6 +8,7 @@ private:
 	int yLocal;
 	int heightLocal = 64;
 	int widthLocal = 64;
+	SDL_Rect knightClip;
 
 
 public:
@@ -27,11 +28,22 @@ public:
 
 	SDL_Rect returnRect() {
 		SDL_Rect re;
-		re.x = xLocal;
 		re.y = yLocal;
+		re.x = xLocal;
 		re.h = heightLocal;
 		re.w = widthLocal;
 		return re;
 	}
 
+	void refresh() {
+		knightClip.x = 64;
+		knightClip.y = 0;
+		knightClip.h = 64;
+		knightClip.w = 64;
+	}
+
+	void render(SDL_Renderer* ren) {
+		refresh();
+		SDL_RenderCopy(ren, tex, &knightClip, &returnRect());
+	}
 };

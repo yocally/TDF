@@ -74,6 +74,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="ExternalHeaders.h" />
     <ClInclude Include="InternalHeaders.h" />
     <ClInclude Include="Knight.h" />

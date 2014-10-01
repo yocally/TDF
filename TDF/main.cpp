@@ -16,7 +16,7 @@ void refresh();
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
-SDL_Texture* gBackground = NULL;
+Background mainBackground;
 Knight knight1;
 
 
@@ -47,8 +47,8 @@ bool init() {
 }
 
 void loadMedia() {
-	gBackground = loadTexture("rec/background.png");
-	knight1.setTex(loadTexture("rec/char.png"));
+	mainBackground.setTex(loadTexture("rec/background.png"));
+	knight1.setTex(loadTexture("rec/Knight.png"));
 }
 
 SDL_Texture* loadTexture(std::string path) {
@@ -68,8 +68,6 @@ SDL_Texture* loadTexture(std::string path) {
 }
 
 void close() {
-	SDL_DestroyTexture(gBackground);
-	gBackground = NULL;
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
@@ -80,8 +78,8 @@ void close() {
 
 void refresh() {
 	SDL_RenderClear(gRenderer);
-	SDL_RenderCopy(gRenderer, gBackground, NULL, NULL);
-	SDL_RenderCopy(gRenderer, knight1.tex, NULL, &knight1.returnRect());
+	mainBackground.render(gRenderer);
+	knight1.render(gRenderer);
 	SDL_RenderPresent(gRenderer);
 }
 
