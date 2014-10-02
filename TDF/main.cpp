@@ -1,11 +1,9 @@
-
 #include "AllHeaders.h"
 #include "Background.h"
 #include "GameTextures.h"
 #include "Inn.h"
-#include "Knight.h"
+#include "NPC.h"
 #include "TextureHelper.h"
-#include "Event.h"
 
 
 // Function Redef
@@ -53,7 +51,8 @@ bool init() {
 void loadMedia() {
 	G::setRen(gRenderer);
 	G::loadMedia(G::ren);
-	inn1.addKnight("knight1");
+	int n = 0;
+	inn1.addNPC("knight" + std::to_string(n), 64, 64);
 }
 
 void close() {
@@ -83,7 +82,9 @@ int main(int argc, char* argv[]) {
 	SDL_Event e;
 	while (!quit) {
 		while (SDL_PollEvent(&e) != 0) {
-
+			if (e.type == SDL_QUIT) {
+				quit = true;
+			};
 		}
 		refresh();
 	}

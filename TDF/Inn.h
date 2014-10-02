@@ -1,6 +1,6 @@
 
 #include "AllHeaders.h"
-#include "Knight.h"
+#include "NPC.h"
 #include "TextureHelper.h"
 
 #ifndef __INN_H_INCLUDED__
@@ -25,7 +25,7 @@ public:
 
 	// Variables - Spawner Values
 
-	std::vector<Knight> knightVector;
+	std::vector<NPC> knightVector;
 
 
 	// Functions - Inn Functions
@@ -49,10 +49,10 @@ public:
 	}
 	// Functions - Spawner Functions
 
-	void addKnight(std::string fTag) {
-		Knight temp;
+	void addNPC(std::string fTag, int fX, int fY) {
+		NPC temp;
 		temp.tag = fTag;
-		temp.setRect(100, 100);
+		temp.setRect(fX, fY);
 		knightVector.push_back(temp);
 	}
 	
