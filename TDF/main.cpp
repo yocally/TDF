@@ -51,8 +51,10 @@ bool init() {
 void loadMedia() {
 	G::setRen(gRenderer);
 	G::loadMedia(G::ren);
-	int n = 0;
-	inn1.addNPC("knight" + std::to_string(n), 64, 64);
+	for (int x = 0; x < 200000; x++) {
+		inn1.addNPC("Knight" + std::to_string(x), G::rand(1, 580), G::rand(1, 420));
+		std::cout << "Knight" + std::to_string(x) << std::endl;
+	}
 }
 
 void close() {

@@ -45,37 +45,7 @@ public:
 	}
 
 	void refresh() {
-		if (firstRun) {
-			firstRun = false;
-			animStartTime = SDL_GetTicks();
-		}
-		animEndTime = animStartTime + 200;
-		if (animEndTime <= SDL_GetTicks()) {
-			if (isMoving == true) {
-				if (rorl == true) {
-					if (frame < 2) {
-						frame++;
-					}
-					else {
-						rorl = false;
-					}
-				}
-				if (rorl == false) {
-					if (frame > 0) {
-						frame--;
-					}
-					else {
-						frame++;
-						rorl = true;
-					}
-				}
-			}
-			else {
-				frame = 1;
-			}
-			animStartTime = SDL_GetTicks();
-		}
-
+		animate();
 		knightClip.x = frame * size;
 		knightClip.y = derec * size;
 		knightClip.h = size;
@@ -87,9 +57,39 @@ public:
 		SDL_RenderCopy(ren, G::knight, &knightClip, &returnRect());
 	}
 
-	void AI(std::string behaver, std::string alignment){
-		if (behaver == "ground"){
+	void animate() {
+		if (isMoving) {
+			if (firstRun) {
+				firstRun = false;
+				animStartTime = SDL_GetTicks();
+			}
 
+			animEndTime = animStartTime + 200;
+			if (animEndTime <= SDL_GetTicks()) {
+				if (isMoving == true) {
+					if (rorl == true) {
+						if (frame < 2) {
+							frame++;
+						}
+						else {
+							rorl = false;
+						}
+					}
+					if (rorl == false) {
+						if (frame > 0) {
+							frame--;
+						}
+						else {
+							frame++;
+							rorl = true;
+						}
+					}
+				}
+				else {
+					frame = 1;
+				}
+				animStartTime = SDL_GetTicks();
+			}
 		}
 	}
 };
