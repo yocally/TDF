@@ -49,25 +49,31 @@ public:
 		}
 		animEndTime = animStartTime + 200;
 		if (animEndTime <= SDL_GetTicks()) {
-			if (rorl == true) {
-				if (frame < 2) {
-					frame++;
+			if (isMoving == true) {
+				if (rorl == true) {
+					if (frame < 2) {
+						frame++;
+					}
+					else {
+						rorl = false;
+					}
 				}
-				else {
-					rorl = false;
+				if (rorl == false) {
+					if (frame > 0) {
+						frame--;
+					}
+					else {
+						frame++;
+						rorl = true;
+					}
 				}
 			}
-			if (rorl == false) {
-				if (frame < 0) {
-					frame--;
-				}
-				else {
-					rorl = true;
-				}
+			else {
+				frame = 1;
 			}
-
 			animStartTime = SDL_GetTicks();
 		}
+
 		knightClip.x = frame * size;
 		knightClip.y = derec * size;
 		knightClip.h = size;

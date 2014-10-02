@@ -76,6 +76,7 @@
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="GameTextures.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="Inn.h" />
     <ClInclude Include="AllHeaders.h" />
     <ClInclude Include="Knight.h" />
