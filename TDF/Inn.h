@@ -32,7 +32,7 @@ public:
 
 	void render(SDL_Renderer* loadedRen) {
 		refresh();
-		SDL_RenderCopy(loadedRen, G::inn, NULL, &rect);
+		SDL_RenderCopy(loadedRen, Texhelp::inn, NULL, &rect);
 	}
 
 	void setRect(int x, int y) {

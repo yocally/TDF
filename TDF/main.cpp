@@ -4,6 +4,7 @@
 #include "Inn.h"
 #include "NPC.h"
 #include "TextureHelper.h"
+#include "Helper.h"
 
 
 // Function Redef
@@ -49,10 +50,10 @@ bool init() {
 }
 
 void loadMedia() {
-	G::setRen(gRenderer);
-	G::loadMedia(G::ren);
-	for (int x = 0; x < 200000; x++) {
-		inn1.addNPC("Knight" + std::to_string(x), G::rand(1, 580), G::rand(1, 420));
+	Texhelp::setRen(gRenderer);
+	Texhelp::loadMedia(Texhelp::ren);
+	for (int x = 0; x < 20; x++) {
+		inn1.addNPC("Knight" + std::to_string(x), Helper::rand(1, 580), Helper::rand(1, 420));
 		std::cout << "Knight" + std::to_string(x) << std::endl;
 	}
 }
@@ -71,7 +72,7 @@ void refresh() {
 	mainBackground.render(gRenderer);
 	inn1.renderKnightVector(gRenderer);
 	inn1.setRect(220, 60);
-	inn1.render(G::ren);
+	inn1.render(Texhelp::ren);
 	SDL_RenderPresent(gRenderer);
 }
 

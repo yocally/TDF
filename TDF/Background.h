@@ -19,7 +19,7 @@ public:
 	}
 
 	void render(SDL_Renderer* ren) {
-		SDL_RenderCopy(ren, G::background, NULL, NULL);
+		SDL_RenderCopy(ren, Texhelp::background, NULL, NULL);
 	}
 };
 
