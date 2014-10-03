@@ -5,7 +5,7 @@
 #ifndef __NPC_H_INCLUDED__
 #define __NPC_H_INCLUDED__
 
-class NPC{
+class NPC {
 private:
 	int thinkStartTime;
 	int thinkEndTime;
@@ -48,7 +48,7 @@ public:
 	}
 
 	void refresh() {
-		AI("grownd", "knight");
+		AI("ground", "knight");
 		animate();
 		knightClip.x = frame * size;
 		knightClip.y = derec * size;
@@ -65,48 +65,50 @@ public:
 		if (derec == 0){
 			yLocal = yLocal + 2;
 		}
-		if (derec == 1){
+		if (derec == 1) {
 			yLocal = yLocal - 2;
 		}
-		if (derec == 2){
+		if (derec == 2) {
 			xLocal = xLocal + 2;
 		}
-		if (derec == 3){
+		if (derec == 3) {
 			xLocal = xLocal - 2;
 		}
-		if (derec == 4){
+		if (derec == 4) {
 			xLocal = xLocal - 2;
 			yLocal = yLocal - 2;
 		}
-		if (derec == 5){
+		if (derec == 5) {
 			xLocal = xLocal + 2;
 			yLocal = yLocal - 2;
 		}
-		if (derec == 6){
+		if (derec == 6) {
 			xLocal = xLocal - 2;
 			yLocal = yLocal + 2;
 		}
-		if (derec == 7){
+		if (derec == 7) {
 			xLocal = xLocal + 2;
 			yLocal = yLocal + 2;
 		}
 	}
 
-	void AI(std::string AItype, std::string NPCtype){
+	void AI(std::string AItype, std::string NPCtype) {
 		thinkEndTime = thinkStartTime + 200;
 		if (thinkEndTime <= SDL_GetTicks()) {
-			if (thought == 0){
-				thought = 1;
-			}
-			if (thought == 1){
-
-				if (NPCsteps < 10){
-					moveind();
-					NPCsteps++;
+			if (AItype == "ground") {
+				if (thought == 0) {
+					thought = 1;
 				}
-				else {
-					NPCsteps = 0;
-					derec = Helper::rand(0, 7);
+				if (thought == 1) {
+
+					if (NPCsteps < Helper::rand(10, 20)){
+						moveind();
+						NPCsteps++;
+					}
+					else {
+						NPCsteps = 0;
+						derec = Helper::rand(0, 7);
+					}
 				}
 			}
 			thinkStartTime = SDL_GetTicks();

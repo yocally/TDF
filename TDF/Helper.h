@@ -11,5 +11,12 @@ namespace Helper{
 
 		return distr(eng);
 	}
+
+	int snap(int grid, double pose){
+		double temp1 = pose / grid;
+		double temp2 = ceil(temp1);
+		int out = temp2 * grid;
+		return out;
+	}
 }
 #endif

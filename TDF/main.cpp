@@ -26,7 +26,7 @@ Inn inn1;
 // Functions
 
 bool init() {
-	gWindow = SDL_CreateWindow("The Discovery Forge", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+	gWindow = SDL_CreateWindow("The Discovery Forge", 100, 100, 1600, 900, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL) {
 		printf("Window could not be created!\n SDL_Error: %s\n", SDL_GetError());
 		return false;
@@ -52,8 +52,8 @@ bool init() {
 void loadMedia() {
 	Texhelp::setRen(gRenderer);
 	Texhelp::loadMedia(Texhelp::ren);
-	for (int x = 0; x < 20; x++) {
-		inn1.addNPC("Knight" + std::to_string(x), Helper::rand(1, 580), Helper::rand(1, 420));
+	for (int x = 0; x < Helper::rand(10, 100); x++) {
+		inn1.addNPC("Knight" + std::to_string(x), Helper::rand(1, 1526), Helper::rand(1, 826));
 		std::cout << "Knight" + std::to_string(x) << std::endl;
 	}
 }
