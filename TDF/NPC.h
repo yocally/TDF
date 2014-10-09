@@ -18,6 +18,8 @@ private:
 	int size = 63;
 	int xLocal;
 	int yLocal;
+	int xTarget;
+	int yTarget;
 	int heightLocal = 64;
 	int widthLocal = 64;
 	SDL_Rect knightClip;
@@ -28,14 +30,21 @@ private:
 
 public:
 
+
+	int speed;
 	SDL_Rect rect;
 	std::string tag;
 
 
 
-	void setRect(int x, int y) {
+	void setLocal(int x, int y) {
 		xLocal = x;
 		yLocal = y;
+	}
+
+	void setTarget(int x, int y) {
+		xTarget = x;
+		yTarget = y;
 	}
 
 	SDL_Rect returnRect() {
@@ -61,57 +70,90 @@ public:
 		SDL_RenderCopy(ren, Texhelp::knight, &knightClip, &returnRect());
 	}
 
+	void Path(int xT, int yT){
+		if (xT != xLocal || yT != yLocal) {
+			if (xT > xLocal && yT > yLocal) {
+				derec = 7;
+			}
+			if (xT < xLocal && yT > yLocal) {
+				derec = 6;
+			}
+			if (xT > xLocal && yT < yLocal) {
+				derec = 5;
+			}
+			if (xT < xLocal && yT < yLocal) {
+				derec = 4;
+			}
+			if (xT < xLocal && yT == yLocal) {
+				derec = 3;
+			}
+			if (xT > xLocal && yT == yLocal) {
+				derec = 2;
+			}
+			if (xT == xLocal && yT < yLocal) {
+				derec = 1;
+			}
+			if (xT == xLocal && yT > yLocal) {
+				derec = 0;
+			}
+		}
+		if (xT == xLocal && yT == yLocal) {
+			derec = 8;
+		}
+	}
+	
+
 	void moveind(){
 		if (derec == 0){
-			yLocal = yLocal + 2;
+			yLocal += speed;
 		}
 		if (derec == 1) {
-			yLocal = yLocal - 2;
+			yLocal -= speed;
 		}
 		if (derec == 2) {
-			xLocal = xLocal + 2;
+			xLocal += speed;
 		}
 		if (derec == 3) {
-			xLocal = xLocal - 2;
+			xLocal -= speed;
 		}
 		if (derec == 4) {
-			xLocal = xLocal - 2;
-			yLocal = yLocal - 2;
+			xLocal -= speed;
+			yLocal -= speed;
 		}
 		if (derec == 5) {
-			xLocal = xLocal + 2;
-			yLocal = yLocal - 2;
+			xLocal += speed;
+			yLocal -= speed;
 		}
 		if (derec == 6) {
-			xLocal = xLocal - 2;
-			yLocal = yLocal + 2;
+			xLocal -= speed;
+			yLocal += speed;
 		}
 		if (derec == 7) {
-			xLocal = xLocal + 2;
-			yLocal = yLocal + 2;
+			xLocal += speed;
+			yLocal += speed;
 		}
 	}
 
 	void AI(std::string AItype, std::string NPCtype) {
-		thinkEndTime = thinkStartTime + 200;
+		thinkEndTime = thinkStartTime + 100;
 		if (thinkEndTime <= SDL_GetTicks()) {
-			if (AItype == "ground") {
-				if (thought == 0) {
-					thought = 1;
-				}
-				if (thought == 1) {
-
-					if (NPCsteps < Helper::rand(10, 20)){
-						moveind();
-						NPCsteps++;
-					}
-					else {
-						NPCsteps = 0;
-						derec = Helper::rand(0, 7);
-					}
-				}
+			if (thought == 0) /*// Stop and thnink. //*/ {
+				thought = 1;
 			}
-			thinkStartTime = SDL_GetTicks();
+			if (thought == 1) /*// Walk. //*/ {
+				if (NPCsteps < 16){
+					moveind();
+					NPCsteps++;
+				}
+				else {
+					NPCsteps = 0;
+					Path(xTarget, yTarget);
+				}
+				thinkStartTime = SDL_GetTicks();
+			}
+			if (thought == 2) /*//  //*/ {
+				thought = 0;
+			}
 		}
 	}
 
@@ -124,7 +166,7 @@ public:
 				thinkStartTime = SDL_GetTicks();
 			}
 
-			animEndTime = animStartTime + 200;
+			animEndTime = animStartTime + speed * 200;
 			if (animEndTime <= SDL_GetTicks()) {
 				if (isMoving == true) {
 					if (rorl == true) {

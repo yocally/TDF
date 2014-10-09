@@ -25,14 +25,14 @@ public:
 
 	// Variables - Spawner Values
 
-	std::vector<NPC> knightVector;
+	std::vector<NPC> NPCVector;
 
 
 	// Functions - Inn Functions
 
 	void render(SDL_Renderer* loadedRen) {
 		refresh();
-		SDL_RenderCopy(loadedRen, Texhelp::inn, NULL, &rect);
+		//SDL_RenderCopy(loadedRen, Texhelp::inn, NULL, &rect);
 	}
 
 	void setRect(int x, int y) {
@@ -52,13 +52,14 @@ public:
 	void addNPC(std::string fTag, int fX, int fY) {
 		NPC temp;
 		temp.tag = fTag;
-		temp.setRect(fX, fY);
-		knightVector.push_back(temp);
+		temp.setLocal(fX, fY);
+		temp.setTarget(Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
+		NPCVector.push_back(temp);
 	}
 	
-	void renderKnightVector(SDL_Renderer* ren) {
-		for (int x = 0; x < knightVector.size(); x++) {
-			knightVector.at(x).render(ren);
+	void renderNPCVector(SDL_Renderer* ren) {
+		for (int x = 0; x < NPCVector.size(); x++) {
+			NPCVector.at(x).render(ren);
 		}
 	}
 };

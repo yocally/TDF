@@ -12,11 +12,69 @@ namespace Helper{
 		return distr(eng);
 	}
 
-	int snap(int grid, double pose){
+	int snap(bool up, int grid, int pose) {
 		double temp1 = pose / grid;
-		double temp2 = ceil(temp1);
+		double temp2;
+		if (up == true) {
+			temp2 = ceil(temp1);
+		}
+		if (up == false) {
+			temp2 = floor(temp1);
+		}
 		int out = temp2 * grid;
 		return out;
 	}
+
+	int getLarge(int a[]) {
+		int mem = a[0];
+		for (int x = 1; x < sizeof(a); x++) {
+			if (mem < a[x]) {
+				mem = a[x];
+			}
+		}
+		return mem;
+	}
+
+	int getSmall(int a[]) {
+		int mem = a[0];
+		for (int x = 1; x < sizeof(a); x++) {
+			if (mem > a[x]) {
+				mem = a[x];
+			}
+		}
+		return mem;
+	}
+
+	double getAv(int a[]) {
+		int mem = 0;
+		for (int x = 0; x < sizeof(a); x++) {
+			mem =+ a[x];
+		}
+		return mem / sizeof(a);
+	}
+
+	void sense(int mnsize, int mxsize, int xT, int yT, int xL, int yL) {
+		if (xT != xL + mnsize || yT != yL) {
+			if (xT > xL && yT > yL) {
+			}
+			if (xT < xL && yT > yL) {
+			}
+			if (xT > xL && yT < yL) {
+			}
+			if (xT < xL && yT < yL) {
+			}
+			if (xT < xL && yT == yL) {
+			}
+			if (xT > xL && yT == yL) {
+			}
+			if (xT == xL && yT < yL) {
+			}
+			if (xT == xL && yT > yL) {
+			}
+		}
+		if (xT == xL && yT == yL) {
+		}
+	}
+
 }
 #endif
