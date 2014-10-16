@@ -53,6 +53,8 @@ public:
 		NPC temp;
 		temp.tag = fTag;
 		temp.setLocal(fX, fY);
+		temp.xCollide = fX;
+		temp.xCollide = fY;
 		temp.setTarget(Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
 		NPCVector.push_back(temp);
 	}

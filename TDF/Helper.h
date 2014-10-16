@@ -21,7 +21,8 @@ namespace Helper{
 		if (up == false) {
 			temp2 = floor(temp1);
 		}
-		int out = temp2 * grid;
+		double temp3 = temp2 * grid;
+		int out = temp3;
 		return out;
 	}
 

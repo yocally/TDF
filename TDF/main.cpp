@@ -96,6 +96,9 @@ int main(int argc, char* argv[]) {
 					inn1.NPCVector.at(a).setTarget(Helper::snap(true, 16, x), Helper::snap(true, 16, y));
 				}
 			}
+			if (e.type == SDL_KEYDOWN) {
+				inn1.NPCVector.at(1).test();
+			}
 		}
 		refresh();
 	}

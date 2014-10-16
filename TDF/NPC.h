@@ -16,12 +16,9 @@ private:
 	int derec = Helper::rand(0, 7);
 	int frame = 0;
 	int size = 63;
-	int xLocal;
-	int yLocal;
-	int xTarget;
-	int yTarget;
-	int heightLocal = 64;
-	int widthLocal = 64;
+	int xLocal, yLocal;
+	int xTarget, yTarget;
+	int heightLocal = 64, widthLocal = 64;
 	SDL_Rect knightClip;
 	bool isMoving = true;
 	bool firstRun = true;
@@ -30,12 +27,15 @@ private:
 
 public:
 
-
+	int xCollide;
+	int yCollide;
 	int speed;
 	SDL_Rect rect;
 	std::string tag;
 
-
+	void test() {
+		std::cout << xCollide << " " << yCollide << std::endl;
+	}
 
 	void setLocal(int x, int y) {
 		xLocal = x;
@@ -74,27 +74,39 @@ public:
 		if (xT != xLocal || yT != yLocal) {
 			if (xT > xLocal && yT > yLocal) {
 				derec = 7;
+				xCollide += 16;
+				xCollide += 16;
 			}
 			if (xT < xLocal && yT > yLocal) {
 				derec = 6;
+				xCollide -= 16;
+				xCollide += 16;
 			}
 			if (xT > xLocal && yT < yLocal) {
 				derec = 5;
+				xCollide += 16;
+				xCollide -= 16;
 			}
 			if (xT < xLocal && yT < yLocal) {
 				derec = 4;
+				xCollide -= 16;
+				xCollide -= 16;
 			}
 			if (xT < xLocal && yT == yLocal) {
 				derec = 3;
+				xCollide -= 16;
 			}
 			if (xT > xLocal && yT == yLocal) {
 				derec = 2;
+				xCollide += 16;
 			}
 			if (xT == xLocal && yT < yLocal) {
 				derec = 1;
+				yCollide -= 16;
 			}
 			if (xT == xLocal && yT > yLocal) {
 				derec = 0;
+				yCollide += 16;
 			}
 		}
 		if (xT == xLocal && yT == yLocal) {
