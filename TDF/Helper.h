@@ -22,8 +22,8 @@ namespace Helper{
 			temp2 = floor(temp1);
 		}
 		double temp3 = temp2 * grid;
-		int out = temp3;
-		return out;
+		double out = temp3;
+		return static_cast<int>(out);
 	}
 
 	int getLarge(int a[]) {

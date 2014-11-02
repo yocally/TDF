@@ -54,7 +54,7 @@ void loadMedia() {
 	Texhelp::loadMedia(Texhelp::ren);
 	for (int x = 0; x < 4; x++) {
 		inn1.addNPC("Knight" + std::to_string(x), Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
-		std::cout << "Knight" + std::to_string(x) << std::endl;
+		std::cout << "Knight" + std::to_string(x) + " " << std::endl;
 		inn1.NPCVector.at(x).speed = 1;
 	}
 }

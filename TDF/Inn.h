@@ -8,6 +8,7 @@
 
 class Inn{
 private:
+	int npcnumber = 0;
 	int xLocal;
 	int yLocal;
 	int heightLocal = 128;
@@ -52,6 +53,8 @@ public:
 	void addNPC(std::string fTag, int fX, int fY) {
 		NPC temp;
 		temp.tag = fTag;
+		temp.number = npcnumber;
+		npcnumber++;
 		temp.setLocal(fX, fY);
 		temp.xCollide = fX;
 		temp.xCollide = fY;

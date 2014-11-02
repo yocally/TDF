@@ -23,15 +23,17 @@ private:
 	bool isMoving = true;
 	bool firstRun = true;
 	bool rorl = true;
-	std::string alignment;
+	
 
 public:
 
 	int xCollide;
 	int yCollide;
 	int speed;
+	int number;
 	SDL_Rect rect;
 	std::string tag;
+	std::string alignment;
 
 	void test() {
 		std::cout << xCollide << " " << yCollide << std::endl;
