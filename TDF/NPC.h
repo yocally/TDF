@@ -72,62 +72,58 @@ public:
 		SDL_RenderCopy(ren, Texhelp::knight, &knightClip, &returnRect());
 	}
 
-	/*//void colltest(){
-		for (int x = 0; x < map1.NPCVector.size(); x++) {
-			int xCollidel = map1.NPCVector.at(x).xCollide;
-			int yCollidel = map1.NPCVector.at(x).yCollide;
-			if (derec == 0){
-				yLocal += speed;
+	void colltest(){
+		for (int x = 0; x < NPChelper::NPCVector.size(); x++) {
+			int xCollidel = NPChelper::NPCVector.at(x).xCollide;
+			int yCollidel = NPChelper::NPCVector.at(x).yCollide;
+			if (xCollidel == xCollide + 16){// == 0
+				
 			}
-			if (derec == 1) {
-				yLocal -= speed;
+			if (yCollidel == yCollide - 16) {//derec == 1
+				
 			}
-			if (derec == 2) {
-				xLocal += speed;
+			if (yCollidel == yCollide + 16) {//derec == 2
+				
 			}
-			if (derec == 3) {
-				xLocal -= speed;
+			if (xCollidel == xCollide - 16) {//derec == 3
+				
 			}
-			if (derec == 4) {
-				xLocal -= speed;
-				yLocal -= speed;
+			if (xCollidel == xCollide - 16 && yCollidel == yCollide - 16) {//derec == 4
+				
 			}
-			if (derec == 5) {
-				xLocal += speed;
-				yLocal -= speed;
+			if (xCollidel == xCollide + 16 && yCollidel == yCollide - 16) {//derec == 5
+				
 			}
-			if (derec == 6) {
-				xLocal -= speed;
-				yLocal += speed;
+			if (xCollidel == xCollide - 16 && yCollidel == yCollide + 16) {//derec == 6
+				
 			}
-			if (derec == 7) {
-				xLocal += speed;
-				yLocal += speed;
+			if (xCollidel == xCollide + 16 && yCollidel == yCollide + 16) {//derec == 7
+				
 			}
 		}
-	}//*/
+	}
 
 	void Path(int xT, int yT){
 		if (xT != xLocal || yT != yLocal) {
 			if (xT > xLocal && yT > yLocal) {
 				derec = 7;
 				xCollide += 16;
-				xCollide += 16;
+				yCollide += 16;
 			}
 			if (xT < xLocal && yT > yLocal) {
 				derec = 6;
 				xCollide -= 16;
-				xCollide += 16;
+				yCollide += 16;
 			}
 			if (xT > xLocal && yT < yLocal) {
 				derec = 5;
 				xCollide += 16;
-				xCollide -= 16;
+				yCollide -= 16;
 			}
 			if (xT < xLocal && yT < yLocal) {
 				derec = 4;
 				xCollide -= 16;
-				xCollide -= 16;
+				yCollide -= 16;
 			}
 			if (xT < xLocal && yT == yLocal) {
 				derec = 3;
@@ -244,4 +240,25 @@ public:
 		}
 	}
 };
+
+namespace NPChelper{
+	std::vector<NPC> NPCVector;
+
+	void addNPC(std::string ftag, int fX, int fY) {
+		NPC temp;
+		temp.tag;
+		temp.setLocal(fX, fY);
+		temp.xCollide = fX;
+		temp.yCollide = fX;
+		temp.setTarget(Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1,826)));
+		NPCVector.push_back(temp);
+	}
+
+	void renderNPCVector(SDL_Renderer* ren) {
+		for (int x = 0; x < NPCVector.size(); x++) {
+			NPCVector.at(x).render(ren);
+		}
+	}
+
+}
 #endif

@@ -3,7 +3,7 @@
 #include "GameTextures.h"
 #include "Map.h"
 #include "Inn.h"
-#include "NPC2.h"
+#include "NPC.h"
 #include "TextureHelper.h"
 #include "Helper.h"
 
@@ -73,14 +73,15 @@ void close() {
 void refresh() {
 	SDL_RenderClear(gRenderer);
 	mainBackground.render(gRenderer);
+	NPChelper::renderNPCVector(gRenderer);
 	SDL_RenderPresent(gRenderer);
 }
 
 void printList() {
 	for (int x = 0; x < NPChelper::NPCVector.size(); x++) {
-		printf("Tag:        %s\n", map1.NPCVector.at(x).tag);
-		printf("xCollide:   %d\n", map1.NPCVector.at(x).xCollide);
-		printf("yCollide:   %d\n", map1.NPCVector.at(x).yCollide);
+		printf("Tag:        %s\n", NPChelper::NPCVector.at(x).tag);
+		printf("xCollide:   %d\n", NPChelper::NPCVector.at(x).xCollide);
+		printf("yCollide:   %d\n", NPChelper::NPCVector.at(x).yCollide);
 	}
 }
 
@@ -99,8 +100,8 @@ int main(int argc, char* argv[]) {
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
 				SDL_GetMouseState(&x, &y);
-				for (int a = 0; a < map1.NPCVector.size(); a++) {
-					map1.NPCVector.at(a).setTarget(Helper::snap(true, 16, x), Helper::snap(true, 16, y));
+				for (int a = 0; a < NPChelper::NPCVector.size(); a++) {
+					NPChelper::NPCVector.at(a).setTarget(Helper::snap(true, 16, x), Helper::snap(true, 16, y));
 				}
 			}
 			if (e.type == SDL_KEYDOWN) {

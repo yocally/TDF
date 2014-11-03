@@ -1,47 +1,29 @@
-﻿Build started 11/2/2014 9:09:20 PM.
+﻿Build started 11/3/2014 1:14:20 AM.
      1>Project "C:\Users\david_000\Desktop\get hub\TDF - Copy\TDF\TDF.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\david_000\Desktop\get hub\TDF - Copy\TDF\SDL_WITH_IMAGE\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(188): warning C4018: '<=' : signed/unsigned mismatch
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(219): warning C4018: '<=' : signed/unsigned mismatch
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(58): error C2653: 'NPChelper' : is not a class or namespace name
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(58): error C3861: 'addNPC': identifier not found
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(60): error C2653: 'NPChelper' : is not a class or namespace name
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(60): error C2065: 'NPCVector' : undeclared identifier
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(60): error C2228: left of '.at' must have class/struct/union
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(76): error C2653: 'NPChelper' : is not a class or namespace name
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(76): error C2065: 'NPCVector' : undeclared identifier
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(76): error C2228: left of '.size' must have class/struct/union
                  type is 'unknown-type'
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(60): error C2228: left of '.speed' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(80): error C2653: 'NPChelper' : is not a class or namespace name
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(80): error C2065: 'NPCVector' : undeclared identifier
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(80): error C2228: left of '.size' must have class/struct/union
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(77): error C2653: 'NPChelper' : is not a class or namespace name
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(77): error C2065: 'NPCVector' : undeclared identifier
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(77): error C2228: left of '.at' must have class/struct/union
                  type is 'unknown-type'
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(81): error C2065: 'map1' : undeclared identifier
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(81): error C2228: left of '.NPCVector' must have class/struct/union
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(77): error C2228: left of '.xCollide' must have class/struct/union
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(78): error C2653: 'NPChelper' : is not a class or namespace name
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(78): error C2065: 'NPCVector' : undeclared identifier
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(78): error C2228: left of '.at' must have class/struct/union
                  type is 'unknown-type'
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(81): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(81): error C2228: left of '.tag' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(82): error C2065: 'map1' : undeclared identifier
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(82): error C2228: left of '.NPCVector' must have class/struct/union
-                 type is 'unknown-type'
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(82): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(82): error C2228: left of '.xCollide' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(83): error C2065: 'map1' : undeclared identifier
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(83): error C2228: left of '.NPCVector' must have class/struct/union
-                 type is 'unknown-type'
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(83): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(83): error C2228: left of '.yCollide' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(102): error C2065: 'map1' : undeclared identifier
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(102): error C2228: left of '.NPCVector' must have class/struct/union
-                 type is 'unknown-type'
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(102): error C2228: left of '.size' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(103): error C2065: 'map1' : undeclared identifier
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(103): error C2228: left of '.NPCVector' must have class/struct/union
-                 type is 'unknown-type'
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(103): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(103): error C2228: left of '.setTarget' must have class/struct/union
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(78): error C2228: left of '.yCollide' must have class/struct/union
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(184): warning C4018: '<=' : signed/unsigned mismatch
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(215): warning C4018: '<=' : signed/unsigned mismatch
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\npc.h(258): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(81): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\david_000\desktop\get hub\tdf - copy\tdf\main.cpp(103): warning C4018: '<' : signed/unsigned mismatch
      1>Done Building Project "C:\Users\david_000\Desktop\get hub\TDF - Copy\TDF\TDF.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:00.30
+Time Elapsed 00:00:00.95
