@@ -2,7 +2,6 @@
 #include "AllHeaders.h"
 #include "GameTextures.h"
 #include "Helper.h"
-#include "map.h"
 
 #ifndef __NPC_H_INCLUDED__
 #define __NPC_H_INCLUDED__
@@ -73,7 +72,7 @@ public:
 		SDL_RenderCopy(ren, Texhelp::knight, &knightClip, &returnRect());
 	}
 
-	void colltest(){
+	/*//void colltest(){
 		for (int x = 0; x < map1.NPCVector.size(); x++) {
 			int xCollidel = map1.NPCVector.at(x).xCollide;
 			int yCollidel = map1.NPCVector.at(x).yCollide;
@@ -106,7 +105,7 @@ public:
 				yLocal += speed;
 			}
 		}
-	}
+	}//*/
 
 	void Path(int xT, int yT){
 		if (xT != xLocal || yT != yLocal) {
