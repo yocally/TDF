@@ -5,6 +5,7 @@
 #include "NPC.h"
 #include "TextureHelper.h"
 #include "Helper.h"
+#include "Map.h"
 
 
 // Function Redef
@@ -13,6 +14,7 @@ bool init();
 void loadMedia();
 void close();
 void refresh();
+void printList();
 
 
 // Globals
@@ -20,7 +22,7 @@ void refresh();
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 Background mainBackground;
-Inn inn1;
+Map map1;
 
 
 // Functions
@@ -53,9 +55,9 @@ void loadMedia() {
 	Texhelp::setRen(gRenderer);
 	Texhelp::loadMedia(Texhelp::ren);
 	for (int x = 0; x < 4; x++) {
-		inn1.addNPC("Knight" + std::to_string(x), Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
+		map1.addNPC("Knight" + std::to_string(x), Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
 		std::cout << "Knight" + std::to_string(x) + " " << std::endl;
-		inn1.NPCVector.at(x).speed = 1;
+		map1.NPCVector.at(x).speed = 1;
 	}
 }
 
@@ -71,10 +73,16 @@ void close() {
 void refresh() {
 	SDL_RenderClear(gRenderer);
 	mainBackground.render(gRenderer);
-	inn1.renderNPCVector(gRenderer);
-	inn1.setRect(220, 60);
-	inn1.render(Texhelp::ren);
+	map1.refresh();
 	SDL_RenderPresent(gRenderer);
+}
+
+void printList() {
+	for (int x = 0; x < map1.NPCVector.size(); x++) {
+		printf("Tag:        %s\n", map1.NPCVector.at(x).tag);
+		printf("xCollide:   %d\n", map1.NPCVector.at(x).xCollide);
+		printf("yCollide:   %d\n", map1.NPCVector.at(x).yCollide);
+	}
 }
 
 int main(int argc, char* argv[]) {
@@ -91,13 +99,13 @@ int main(int argc, char* argv[]) {
 			};
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				int x, y;
-				SDL_GetMouseState(&x,&y);
-				for (int a = 0; a < inn1.NPCVector.size(); a++) {
-					inn1.NPCVector.at(a).setTarget(Helper::snap(true, 16, x), Helper::snap(true, 16, y));
+				SDL_GetMouseState(&x, &y);
+				for (int a = 0; a < map1.NPCVector.size(); a++) {
+					map1.NPCVector.at(a).setTarget(Helper::snap(true, 16, x), Helper::snap(true, 16, y));
 				}
 			}
 			if (e.type == SDL_KEYDOWN) {
-				inn1.NPCVector.at(1).test();
+				printList();
 			}
 		}
 		refresh();

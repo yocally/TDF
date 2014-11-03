@@ -1,4 +1,4 @@
-
+#pragma once
 #include "AllHeaders.h"
 #include "NPC.h"
 #include "TextureHelper.h"
@@ -23,12 +23,6 @@ public:
 	std::string tag;
 	SDL_Renderer* localRenderer;
 
-
-	// Variables - Spawner Values
-
-	std::vector<NPC> NPCVector;
-
-
 	// Functions - Inn Functions
 
 	void render(SDL_Renderer* loadedRen) {
@@ -47,25 +41,6 @@ public:
 		rect.h = heightLocal;
 		rect.w = widthLocal;
 
-	}
-	// Functions - Spawner Functions
-
-	void addNPC(std::string fTag, int fX, int fY) {
-		NPC temp;
-		temp.tag = fTag;
-		temp.number = npcnumber;
-		npcnumber++;
-		temp.setLocal(fX, fY);
-		temp.xCollide = fX;
-		temp.xCollide = fY;
-		temp.setTarget(Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
-		NPCVector.push_back(temp);
-	}
-	
-	void renderNPCVector(SDL_Renderer* ren) {
-		for (int x = 0; x < NPCVector.size(); x++) {
-			NPCVector.at(x).render(ren);
-		}
 	}
 };
 

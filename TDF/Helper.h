@@ -1,3 +1,4 @@
+#pragma once
 #include "AllHeaders.h"
 
 #ifndef __HELPER_H_INCLUDED__

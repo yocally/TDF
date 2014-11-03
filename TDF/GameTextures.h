@@ -1,3 +1,4 @@
+#pragma once
 #include "AllHeaders.h"
 #include "TextureHelper.h"
 
