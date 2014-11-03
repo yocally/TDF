@@ -1,11 +1,12 @@
 #include "AllHeaders.h"
 #include "Background.h"
 #include "GameTextures.h"
+#include "Map.h"
 #include "Inn.h"
-#include "NPC.h"
+#include "NPC2.h"
 #include "TextureHelper.h"
 #include "Helper.h"
-#include "Map.h"
+
 
 
 // Function Redef
@@ -22,7 +23,6 @@ void printList();
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 Background mainBackground;
-Map map1;
 
 
 // Functions
@@ -55,9 +55,9 @@ void loadMedia() {
 	Texhelp::setRen(gRenderer);
 	Texhelp::loadMedia(Texhelp::ren);
 	for (int x = 0; x < 4; x++) {
-		map1.addNPC("Knight" + std::to_string(x), Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
+		NPChelper::addNPC("Knight" + std::to_string(x), Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
 		std::cout << "Knight" + std::to_string(x) + " " << std::endl;
-		map1.NPCVector.at(x).speed = 1;
+		NPChelper::NPCVector.at(x).speed = 1;
 	}
 }
 
@@ -73,12 +73,11 @@ void close() {
 void refresh() {
 	SDL_RenderClear(gRenderer);
 	mainBackground.render(gRenderer);
-	map1.refresh();
 	SDL_RenderPresent(gRenderer);
 }
 
 void printList() {
-	for (int x = 0; x < map1.NPCVector.size(); x++) {
+	for (int x = 0; x < NPChelper::NPCVector.size(); x++) {
 		printf("Tag:        %s\n", map1.NPCVector.at(x).tag);
 		printf("xCollide:   %d\n", map1.NPCVector.at(x).xCollide);
 		printf("yCollide:   %d\n", map1.NPCVector.at(x).yCollide);
