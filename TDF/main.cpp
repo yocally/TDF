@@ -54,8 +54,8 @@ bool init() {
 void loadMedia() {
 	Texhelp::setRen(gRenderer);
 	Texhelp::loadMedia(Texhelp::ren);
-	for (int x = 0; x < 4; x++) {
-		NPChelper::addNPC("Knight" + std::to_string(x), Helper::snap(true, 16, Helper::rand(1, 1526)), Helper::snap(true, 16, Helper::rand(1, 826)));
+	for (int x = 0; x < 10; x++) {
+		NPChelper::addNPC("Knight" + std::to_string(x), Helper::snap(true, 32, Helper::rand(1, 1526)), Helper::snap(true, 32, Helper::rand(1, 826)));
 		std::cout << "Knight" + std::to_string(x) + " " << std::endl;
 		NPChelper::NPCVector.at(x).speed = 1;
 	}
@@ -101,7 +101,7 @@ int main(int argc, char* argv[]) {
 				int x, y;
 				SDL_GetMouseState(&x, &y);
 				for (int a = 0; a < NPChelper::NPCVector.size(); a++) {
-					NPChelper::NPCVector.at(a).setTarget(Helper::snap(true, 16, x), Helper::snap(true, 16, y));
+					NPChelper::NPCVector.at(a).setTarget(Helper::snap(true, 32, x), Helper::snap(true, 32, y));
 				}
 			}
 			if (e.type == SDL_KEYDOWN) {
